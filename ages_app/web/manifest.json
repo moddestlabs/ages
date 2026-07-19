@@ -1,23 +1,30 @@
 {
     "name": "LightSword Ages",
     "short_name": "Ages",
-    "start_url": ".",
+    "id": "https://ages.lightsword.app/",
+    "start_url": "./index.html",
+    "scope": "./",
     "display": "standalone",
     "background_color": "#f8f9fa",
     "theme_color": "#3b4046",
     "description": "Explore biblical ages, people, genealogies, events, timelines, and prophecy.",
     "orientation": "any",
     "prefer_related_applications": false,
+    "categories": ["education", "books", "reference"],
+    "lang": "en-US",
+    "dir": "auto",
     "icons": [
         {
             "src": "icons/Icon-192.png",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
         },
         {
             "src": "icons/Icon-512.png",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
         },
         {
             "src": "icons/Icon-maskable-192.png",

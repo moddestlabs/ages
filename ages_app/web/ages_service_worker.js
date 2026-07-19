@@ -13,6 +13,7 @@ const APP_SHELL_URLS = [
   'flutter.js',
   'flutter_bootstrap.js',
   'manifest.json',
+  'pwa.js',
   'version.json',
   'assets/AssetManifest.bin',
   'assets/AssetManifest.bin.json',
@@ -98,6 +99,22 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(handleStaticRequest(event.request));
 });
 
+self.addEventListener('message', (event) => {
+  const data = event.data || {};
+  if (data.type !== 'GET_CACHE_STATUS') {
+    return;
+  }
+
+  event.waitUntil(
+    getCacheStatus().then((status) => {
+      event.source?.postMessage({
+        type: 'CACHE_STATUS_RESULT',
+        status,
+      });
+    }),
+  );
+});
+
 async function handleNavigationRequest(request) {
   try {
     const networkResponse = await fetch(request);
@@ -170,4 +187,30 @@ function navigationFallbackUrls() {
     './',
     'index.html',
   ];
+}
+
+async function getCacheStatus() {
+  return {
+    shell: {
+      cacheName: APP_SHELL_CACHE,
+      total: APP_SHELL_URLS.length,
+      cached: await countCachedEntries(APP_SHELL_CACHE, APP_SHELL_URLS),
+    },
+    data: {
+      cacheName: DATA_CACHE,
+      total: DATA_URLS.length,
+      cached: await countCachedEntries(DATA_CACHE, DATA_URLS),
+    },
+  };
+}
+
+async function countCachedEntries(cacheName, urls) {
+  const cache = await caches.open(cacheName);
+  let cached = 0;
+  for (const url of urls) {
+    if (await cache.match(url, { ignoreSearch: true })) {
+      cached += 1;
+    }
+  }
+  return cached;
 }
