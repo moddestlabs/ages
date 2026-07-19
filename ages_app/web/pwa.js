@@ -7,6 +7,65 @@
       document.referrer.includes('android-app://');
   }
 
+  const lightSwordRelatedApp = {
+    platform: 'webapp',
+    id: 'https://lightsword.app/',
+    url: 'https://lightsword.app/manifest.json',
+  };
+
+  async function getInstalledRelatedApps() {
+    if (!('getInstalledRelatedApps' in navigator)) {
+      return [];
+    }
+
+    try {
+      return await navigator.getInstalledRelatedApps();
+    } catch (_) {
+      return [];
+    }
+  }
+
+  function isInstalledLightSwordApp(app) {
+    return app &&
+      app.platform === lightSwordRelatedApp.platform &&
+      (app.id === lightSwordRelatedApp.id || app.url === lightSwordRelatedApp.url);
+  }
+
+  async function isLightSwordInstalled() {
+    const relatedApps = await getInstalledRelatedApps();
+    return relatedApps.some(isInstalledLightSwordApp);
+  }
+
+  function openBlankLaunchWindow() {
+    const openedWindow = window.open('', '_blank');
+    if (openedWindow) {
+      openedWindow.opener = null;
+    }
+    return openedWindow;
+  }
+
+  async function openLightSwordReference(reference, url) {
+    const targetUrl = url || `https://lightsword.app/?r=${encodeURIComponent(reference)}`;
+
+    if (!navigator.onLine) {
+      const launchWindow = openBlankLaunchWindow();
+      if (!launchWindow) {
+        return false;
+      }
+
+      if (!(await isLightSwordInstalled())) {
+        launchWindow.close();
+        return false;
+      }
+
+      launchWindow.location.href = targetUrl;
+      return true;
+    }
+
+    const openedWindow = window.open(targetUrl, '_blank', 'noopener,noreferrer');
+    return !!openedWindow;
+  }
+
   async function requestPersistentStorage() {
     if (!navigator.storage || !navigator.storage.persist) {
       return false;
@@ -85,6 +144,7 @@
       serviceWorkerRegistrationScope: null,
       serviceWorkerRegistrationActiveScriptUrl: null,
       serviceWorkerRegistrationActiveState: null,
+      lightSwordInstalled: false,
       cacheStatus: null,
       storageEstimate: null,
       errors: [],
@@ -118,6 +178,12 @@
     }
 
     try {
+      diagnostics.lightSwordInstalled = await isLightSwordInstalled();
+    } catch (error) {
+      diagnostics.errors.push('lightsword_installed:' + String(error));
+    }
+
+    try {
       diagnostics.storageEstimate = await getStorageEstimate();
     } catch (error) {
       diagnostics.errors.push('storage:' + String(error));
@@ -135,6 +201,9 @@
       persisted,
       storageEstimate,
       isOnline: () => navigator.onLine,
+      getInstalledRelatedApps,
+      isLightSwordInstalled,
+      openLightSwordReference,
       getCacheStatus,
       getPwaDiagnostics,
     };

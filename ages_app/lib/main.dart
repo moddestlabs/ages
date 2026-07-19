@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:url_launcher/url_launcher.dart';
 
+import 'lightsword_launcher.dart';
 import 'ui/lightsword_theme.dart';
 
 void main() {
@@ -65,12 +65,14 @@ Future<void> openLightSwordReference(
   String reference,
 ) async {
   final uri = lightswordUri(reference);
-  final launched = await launchUrl(uri, webOnlyWindowName: '_blank');
+  final launched = await launchLightSwordReference(reference, uri);
 
   if (!launched && context.mounted) {
     ScaffoldMessenger.of(
       context,
-    ).showSnackBar(SnackBar(content: Text('Unable to open $uri')));
+    ).showSnackBar(
+      SnackBar(content: Text('Unable to open LightSword for $reference')),
+    );
   }
 }
 

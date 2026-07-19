@@ -10,6 +10,13 @@
     "description": "Explore biblical ages, people, genealogies, events, timelines, and prophecy.",
     "orientation": "any",
     "prefer_related_applications": false,
+    "related_applications": [
+        {
+            "platform": "webapp",
+            "url": "https://lightsword.app/manifest.json",
+            "id": "https://lightsword.app/"
+        }
+    ],
     "categories": ["education", "books", "reference"],
     "lang": "en-US",
     "dir": "auto",
