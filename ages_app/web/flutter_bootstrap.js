@@ -8,4 +8,7 @@ _flutter.loader.load({
     serviceWorkerVersion,
     serviceWorkerUrl: `ages_service_worker.js?v=${serviceWorkerVersion}`,
   },
+  config: {
+    canvasKitBaseUrl: 'canvaskit/',
+  },
 });

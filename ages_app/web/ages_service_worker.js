@@ -118,6 +118,10 @@ self.addEventListener('message', (event) => {
 async function handleNavigationRequest(request) {
   try {
     const networkResponse = await fetch(request);
+    if (shouldPreferCachedResponse(request, networkResponse)) {
+      throw createRedirectMigrationError(request, networkResponse);
+    }
+
     if (networkResponse && networkResponse.ok) {
       const runtimeCache = await caches.open(RUNTIME_CACHE);
       await runtimeCache.put(request, networkResponse.clone());
@@ -151,6 +155,10 @@ async function handleStaticRequest(request) {
   const runtimeCache = await caches.open(RUNTIME_CACHE);
   try {
     const networkResponse = await fetch(request);
+    if (shouldPreferCachedResponse(request, networkResponse)) {
+      throw createRedirectMigrationError(request, networkResponse);
+    }
+
     if (networkResponse && networkResponse.ok) {
       await runtimeCache.put(request, networkResponse.clone());
     }
@@ -187,6 +195,52 @@ function navigationFallbackUrls() {
     './',
     'index.html',
   ];
+}
+
+function shouldPreferCachedResponse(request, response) {
+  if (!response) {
+    return false;
+  }
+
+  if (response.type === 'opaqueredirect') {
+    return true;
+  }
+
+  if (!response.redirected || !response.url) {
+    return false;
+  }
+
+  try {
+    const requestUrl = new URL(request.url);
+    const responseUrl = new URL(response.url, self.location.origin);
+    return requestUrl.origin !== responseUrl.origin;
+  } catch (_) {
+    return false;
+  }
+}
+
+function createRedirectMigrationError(request, response) {
+  const requestOrigin = safeOriginFromUrl(request.url);
+  const responseOrigin = safeOriginFromUrl(response?.url);
+
+  return new Error(
+    'redirected_off_origin:' +
+      (requestOrigin || 'unknown') +
+      '->' +
+      (responseOrigin || 'unknown')
+  );
+}
+
+function safeOriginFromUrl(url) {
+  if (!url) {
+    return null;
+  }
+
+  try {
+    return new URL(url, self.location.origin).origin;
+  } catch (_) {
+    return null;
+  }
 }
 
 async function getCacheStatus() {
