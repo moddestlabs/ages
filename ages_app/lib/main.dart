@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'ui/lightsword_theme.dart';
+
 void main() {
   runApp(const AgesApp());
 }
@@ -77,23 +79,10 @@ class AgesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const cedar = Color(0xff3d6f64);
-    const fig = Color(0xff8b4f3d);
-    const paper = Color(0xfff8f5ee);
-
     return MaterialApp(
       title: 'LightSword Ages',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: cedar,
-          primary: cedar,
-          secondary: fig,
-          surface: const Color(0xfffffdf8),
-        ),
-        scaffoldBackgroundColor: paper,
-        useMaterial3: true,
-      ),
+      theme: LightSwordTheme.theme,
       home: const AgesExplorerScreen(),
     );
   }
@@ -185,62 +174,65 @@ class _AgesExplorerScreenState extends State<AgesExplorerScreen> {
         final selectedEventId = _selectedEventId ?? _initialEventId;
         final selectedEvent = selectedEventId == null
             ? null
-          : pack.eventById[selectedEventId];
+            : pack.eventById[selectedEventId];
 
         return Scaffold(
-          body: SafeArea(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final isNarrow = constraints.maxWidth < 920;
-                final sidebar = _ExplorerSidebar(
-                  mode: _mode,
-                  people: matchingPeople,
-                  events: matchingEvents,
-                  selectedPersonId: selectedPerson.id,
-                  selectedEventId: selectedEvent?.id,
-                  onModeChanged: (mode) => setState(() => _mode = mode),
-                  onQueryChanged: (value) => setState(() => _query = value),
-                  onPersonSelected: _selectPerson,
-                  onEventSelected: _selectEvent,
-                );
-                final workspace = _ExplorerWorkspace(
-                  pack: pack,
-                  person: selectedPerson,
-                  event: selectedEvent,
-                );
-                final details = _DetailPanel(
-                  pack: pack,
-                  person: selectedPerson,
-                  event: selectedEvent,
-                );
-
-                if (isNarrow) {
-                  return ListView(
-                    padding: const EdgeInsets.all(12),
-                    children: [
-                      sidebar,
-                      const SizedBox(height: 12),
-                      SizedBox(height: 640, child: workspace),
-                      const SizedBox(height: 12),
-                      details,
-                    ],
+          body: DecoratedBox(
+            decoration: LightSwordTheme.appBackground,
+            child: SafeArea(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final isNarrow = constraints.maxWidth < 920;
+                  final sidebar = _ExplorerSidebar(
+                    mode: _mode,
+                    people: matchingPeople,
+                    events: matchingEvents,
+                    selectedPersonId: selectedPerson.id,
+                    selectedEventId: selectedEvent?.id,
+                    onModeChanged: (mode) => setState(() => _mode = mode),
+                    onQueryChanged: (value) => setState(() => _query = value),
+                    onPersonSelected: _selectPerson,
+                    onEventSelected: _selectEvent,
                   );
-                }
+                  final workspace = _ExplorerWorkspace(
+                    pack: pack,
+                    person: selectedPerson,
+                    event: selectedEvent,
+                  );
+                  final details = _DetailPanel(
+                    pack: pack,
+                    person: selectedPerson,
+                    event: selectedEvent,
+                  );
 
-                return Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      SizedBox(width: 292, child: sidebar),
-                      const SizedBox(width: 16),
-                      Expanded(child: workspace),
-                      const SizedBox(width: 16),
-                      SizedBox(width: 340, child: details),
-                    ],
-                  ),
-                );
-              },
+                  if (isNarrow) {
+                    return ListView(
+                      padding: const EdgeInsets.all(12),
+                      children: [
+                        sidebar,
+                        const SizedBox(height: 12),
+                        SizedBox(height: 640, child: workspace),
+                        const SizedBox(height: 12),
+                        details,
+                      ],
+                    );
+                  }
+
+                  return Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        SizedBox(width: 292, child: sidebar),
+                        const SizedBox(width: 16),
+                        Expanded(child: workspace),
+                        const SizedBox(width: 16),
+                        SizedBox(width: 340, child: details),
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         );
@@ -386,7 +378,11 @@ class _ExplorerSidebar extends StatelessWidget {
 }
 
 class _ExplorerWorkspace extends StatelessWidget {
-  const _ExplorerWorkspace({required this.pack, required this.person, this.event});
+  const _ExplorerWorkspace({
+    required this.pack,
+    required this.person,
+    this.event,
+  });
 
   final AgesPack pack;
   final PersonRecord person;
@@ -440,7 +436,7 @@ class _ExplorerWorkspace extends StatelessWidget {
                 child: _RecordCard(
                   title: ages[index].title,
                   subtitle: ages[index].date.label,
-                  leadingColor: const Color(0xffb9852f),
+                  leadingColor: LightSwordTheme.event,
                   child: referenceChipsOrNull(ages[index].referenceRange),
                 ),
               ),
@@ -510,14 +506,16 @@ class _EventWorkspace extends StatelessWidget {
           _RecordCard(
             title: formatToken(event.kind),
             subtitle: event.date.label,
-            leadingColor: const Color(0xff8b4f3d),
+            leadingColor: LightSwordTheme.prophecy,
             child: referenceChipsOrNull(event.references),
           ),
           const SizedBox(height: 18),
           Expanded(
             child: Row(
               children: [
-                Expanded(child: _PersonChipList(title: 'People', people: people)),
+                Expanded(
+                  child: _PersonChipList(title: 'People', people: people),
+                ),
                 const SizedBox(width: 16),
                 Expanded(
                   child: _LinkedRecordList(
@@ -527,7 +525,7 @@ class _EventWorkspace extends StatelessWidget {
                         (age) => _RecordCard(
                           title: age.title,
                           subtitle: age.date.label,
-                          leadingColor: const Color(0xffb9852f),
+                          leadingColor: LightSwordTheme.event,
                           child: referenceChipsOrNull(age.referenceRange),
                         ),
                       ),
@@ -536,7 +534,7 @@ class _EventWorkspace extends StatelessWidget {
                           title: prophecy.title,
                           subtitle:
                               '${formatToken(prophecy.fulfillmentStatus)} · ${prophecy.certainty}',
-                          leadingColor: const Color(0xff8b4f3d),
+                          leadingColor: LightSwordTheme.prophecy,
                           child: referenceChipsOrNull(prophecy.references),
                         ),
                       ),
@@ -666,7 +664,7 @@ class _TimelineList extends StatelessWidget {
               title: events[index].title,
               subtitle:
                   '${formatToken(events[index].kind)} · ${events[index].date.label}',
-              leadingColor: const Color(0xff8b4f3d),
+              leadingColor: LightSwordTheme.prophecy,
               child: referenceChipsOrNull(events[index].references),
             ),
           ),
@@ -701,7 +699,7 @@ class _DetailPanel extends StatelessWidget {
               title: selectedEvent.title,
               subtitle:
                   '${formatToken(selectedEvent.kind)} · ${selectedEvent.date.label}',
-              leadingColor: const Color(0xff8b4f3d),
+              leadingColor: LightSwordTheme.prophecy,
               child: referenceChipsOrNull(selectedEvent.references),
             ),
             const SizedBox(height: 20),
@@ -759,7 +757,7 @@ class _DetailPanel extends StatelessWidget {
                 title: prophecy.title,
                 subtitle:
                     '${formatToken(prophecy.fulfillmentStatus)} · ${prophecy.certainty}',
-                leadingColor: const Color(0xff8b4f3d),
+                leadingColor: LightSwordTheme.prophecy,
                 child: referenceChipsOrNull(prophecy.references),
               ),
             ),
@@ -778,17 +776,7 @@ class _Panel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.94),
-        border: Border.all(color: const Color(0xffd9d0c1)),
-        boxShadow: const [
-          BoxShadow(
-            color: Color(0x1f24302f),
-            blurRadius: 40,
-            offset: Offset(0, 18),
-          ),
-        ],
-      ),
+      decoration: LightSwordTheme.panelDecoration(),
       child: Padding(padding: const EdgeInsets.all(18), child: child),
     );
   }
@@ -810,16 +798,7 @@ class _RecordCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: BoxDecoration(
-        color: const Color(0xfffffaf0),
-        border: Border(
-          left: BorderSide(color: leadingColor, width: 4),
-          top: const BorderSide(color: Color(0xffd9d0c1)),
-          right: const BorderSide(color: Color(0xffd9d0c1)),
-          bottom: const BorderSide(color: Color(0xffd9d0c1)),
-        ),
-        borderRadius: BorderRadius.circular(8),
-      ),
+      decoration: LightSwordTheme.recordDecoration(leadingColor),
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: Column(
@@ -857,7 +836,12 @@ class _SectionHeader extends StatelessWidget {
             style: const TextStyle(fontWeight: FontWeight.w900),
           ),
         ),
-        if (count != null) Badge(label: Text('$count')),
+        if (count != null)
+          Badge(
+            backgroundColor: LightSwordTheme.surfaceMuted,
+            textColor: LightSwordTheme.scripture,
+            label: Text('$count'),
+          ),
       ],
     );
   }
@@ -873,7 +857,7 @@ class _Eyebrow extends StatelessWidget {
     return Text(
       text.toUpperCase(),
       style: TextStyle(
-        color: Theme.of(context).colorScheme.primary,
+        color: LightSwordTheme.scripture,
         fontSize: 11,
         fontWeight: FontWeight.w900,
         letterSpacing: 0,
@@ -893,6 +877,11 @@ class _LightSwordChip extends StatelessWidget {
     return ActionChip(
       avatar: const Icon(Icons.open_in_new, size: 16),
       label: Text(reference),
+      backgroundColor: LightSwordTheme.surfaceMuted,
+      side: const BorderSide(color: LightSwordTheme.line),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(LightSwordTheme.controlRadius),
+      ),
       onPressed: () => openLightSwordReference(context, reference),
       tooltip: uri.toString(),
     );
@@ -1005,10 +994,10 @@ class AgesPack {
   List<AgeRecord> agesFor(String personId) =>
       ages.where((age) => age.personIds.contains(personId)).toList();
 
-    List<AgeRecord> agesForEvent(String eventId) =>
+  List<AgeRecord> agesForEvent(String eventId) =>
       ages.where((age) => age.eventIds.contains(eventId)).toList();
 
-    List<ProphecyRecord> propheciesForEvent(String eventId) => prophecies
+  List<ProphecyRecord> propheciesForEvent(String eventId) => prophecies
       .where((prophecy) => prophecy.relatedEventIds.contains(eventId))
       .toList();
 

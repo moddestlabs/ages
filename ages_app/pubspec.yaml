@@ -61,6 +61,13 @@ flutter:
   assets:
     - ../data/biblical_ages_core/pack.json
 
+  fonts:
+    - family: LightSwordSerif
+      fonts:
+        - asset: assets/fonts/DejaVuSerif.ttf
+        - asset: assets/fonts/DejaVuSerif-Bold.ttf
+          weight: 700
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
