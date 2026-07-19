@@ -67,6 +67,10 @@ flutter build web --release --base-href /
 
 The generated web build is written to `ages_app/build/web/`.
 
+For local preview, use `./build.sh`. It removes the generated Flutter service
+worker from the served build so seed-data edits are not hidden by a stale PWA
+cache in the browser.
+
 ## GitHub Pages deployment
 
 Commits pushed to `main` run `.github/workflows/deploy-web.yml`. The workflow

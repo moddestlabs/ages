@@ -16,6 +16,9 @@ the app attempts broad biblical coverage.
 
 - Every claim should include source references.
 - Compressed genealogies should use `ancestor_descendant`, not `parent_child`.
+- Concubine relationships should use `concubine`, while birth relationships
+  should still use explicit `parent_child` edges for both parents where the text
+  identifies them.
 - Matthew 1 and Luke 3 remain separate named genealogies.
 - Approximate chronology should use relative labels until a chronology pack is
   deliberately chosen.

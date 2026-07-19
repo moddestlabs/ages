@@ -127,6 +127,61 @@
       "confidence": "high"
     },
     {
+      "id": "person.bilhah",
+      "primaryName": "Bilhah",
+      "aliases": [],
+      "gender": "female",
+      "tribes": [],
+      "roles": ["matriarch", "concubine"],
+      "keyReferences": ["gen30.3-8", "gen35.25"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.zilpah",
+      "primaryName": "Zilpah",
+      "aliases": [],
+      "gender": "female",
+      "tribes": [],
+      "roles": ["matriarch", "concubine"],
+      "keyReferences": ["gen30.9-13", "gen35.26"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.reuben",
+      "primaryName": "Reuben",
+      "aliases": [],
+      "gender": "male",
+      "tribes": ["Reuben"],
+      "roles": ["tribal-ancestor", "patriarchal-son"],
+      "keyReferences": ["gen29.32", "gen35.23", "gen49.3-4"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.simeon",
+      "primaryName": "Simeon",
+      "aliases": [],
+      "gender": "male",
+      "tribes": ["Simeon"],
+      "roles": ["tribal-ancestor", "patriarchal-son"],
+      "keyReferences": ["gen29.33", "gen35.23", "gen49.5-7"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.levi",
+      "primaryName": "Levi",
+      "aliases": [],
+      "gender": "male",
+      "tribes": ["Levi"],
+      "roles": ["tribal-ancestor", "patriarchal-son"],
+      "keyReferences": ["gen29.34", "gen35.23", "gen49.5-7"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
       "id": "person.judah",
       "primaryName": "Judah",
       "aliases": [],
@@ -138,6 +193,83 @@
       "confidence": "high"
     },
     {
+      "id": "person.dan",
+      "primaryName": "Dan",
+      "aliases": [],
+      "gender": "male",
+      "tribes": ["Dan"],
+      "roles": ["tribal-ancestor", "patriarchal-son"],
+      "keyReferences": ["gen30.6", "gen35.25", "gen49.16-18"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.naphtali",
+      "primaryName": "Naphtali",
+      "aliases": [],
+      "gender": "male",
+      "tribes": ["Naphtali"],
+      "roles": ["tribal-ancestor", "patriarchal-son"],
+      "keyReferences": ["gen30.8", "gen35.25", "gen49.21"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.gad",
+      "primaryName": "Gad",
+      "aliases": [],
+      "gender": "male",
+      "tribes": ["Gad"],
+      "roles": ["tribal-ancestor", "patriarchal-son"],
+      "keyReferences": ["gen30.11", "gen35.26", "gen49.19"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.asher",
+      "primaryName": "Asher",
+      "aliases": [],
+      "gender": "male",
+      "tribes": ["Asher"],
+      "roles": ["tribal-ancestor", "patriarchal-son"],
+      "keyReferences": ["gen30.13", "gen35.26", "gen49.20"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.issachar",
+      "primaryName": "Issachar",
+      "aliases": [],
+      "gender": "male",
+      "tribes": ["Issachar"],
+      "roles": ["tribal-ancestor", "patriarchal-son"],
+      "keyReferences": ["gen30.18", "gen35.23", "gen49.14-15"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.zebulun",
+      "primaryName": "Zebulun",
+      "aliases": [],
+      "gender": "male",
+      "tribes": ["Zebulun"],
+      "roles": ["tribal-ancestor", "patriarchal-son"],
+      "keyReferences": ["gen30.20", "gen35.23", "gen49.13"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.dinah",
+      "primaryName": "Dinah",
+      "aliases": [],
+      "gender": "female",
+      "tribes": [],
+      "roles": ["patriarchal-daughter"],
+      "keyReferences": ["gen30.21", "gen34.1"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
       "id": "person.joseph",
       "primaryName": "Joseph",
       "aliases": [],
@@ -145,6 +277,17 @@
       "tribes": [],
       "roles": ["patriarchal-son"],
       "keyReferences": ["gen30.24", "gen37.2", "gen50.20"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.benjamin",
+      "primaryName": "Benjamin",
+      "aliases": ["Ben-oni"],
+      "gender": "male",
+      "tribes": ["Benjamin"],
+      "roles": ["tribal-ancestor", "patriarchal-son"],
+      "keyReferences": ["gen35.18", "gen35.24", "gen49.27"],
       "notes": [],
       "confidence": "high"
     },
@@ -290,6 +433,78 @@
       "notes": []
     },
     {
+      "id": "rel.jacob.bilhah.concubine",
+      "type": "concubine",
+      "fromPersonId": "person.jacob",
+      "toPersonId": "person.bilhah",
+      "references": ["gen30.3-4", "gen35.22"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.jacob.zilpah.concubine",
+      "type": "concubine",
+      "fromPersonId": "person.jacob",
+      "toPersonId": "person.zilpah",
+      "references": ["gen30.9"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.jacob.reuben.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.jacob",
+      "toPersonId": "person.reuben",
+      "references": ["gen35.23"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.leah.reuben.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.leah",
+      "toPersonId": "person.reuben",
+      "references": ["gen29.32", "gen35.23"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.jacob.simeon.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.jacob",
+      "toPersonId": "person.simeon",
+      "references": ["gen35.23"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.leah.simeon.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.leah",
+      "toPersonId": "person.simeon",
+      "references": ["gen29.33", "gen35.23"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.jacob.levi.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.jacob",
+      "toPersonId": "person.levi",
+      "references": ["gen35.23"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.leah.levi.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.leah",
+      "toPersonId": "person.levi",
+      "references": ["gen29.34", "gen35.23"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
       "id": "rel.jacob.judah.parent",
       "type": "parent_child",
       "fromPersonId": "person.jacob",
@@ -308,6 +523,132 @@
       "notes": []
     },
     {
+      "id": "rel.jacob.dan.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.jacob",
+      "toPersonId": "person.dan",
+      "references": ["gen35.25"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.bilhah.dan.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.bilhah",
+      "toPersonId": "person.dan",
+      "references": ["gen30.5-6", "gen35.25"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.jacob.naphtali.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.jacob",
+      "toPersonId": "person.naphtali",
+      "references": ["gen35.25"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.bilhah.naphtali.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.bilhah",
+      "toPersonId": "person.naphtali",
+      "references": ["gen30.7-8", "gen35.25"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.jacob.gad.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.jacob",
+      "toPersonId": "person.gad",
+      "references": ["gen35.26"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.zilpah.gad.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.zilpah",
+      "toPersonId": "person.gad",
+      "references": ["gen30.10-11", "gen35.26"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.jacob.asher.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.jacob",
+      "toPersonId": "person.asher",
+      "references": ["gen35.26"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.zilpah.asher.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.zilpah",
+      "toPersonId": "person.asher",
+      "references": ["gen30.12-13", "gen35.26"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.jacob.issachar.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.jacob",
+      "toPersonId": "person.issachar",
+      "references": ["gen35.23"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.leah.issachar.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.leah",
+      "toPersonId": "person.issachar",
+      "references": ["gen30.17-18", "gen35.23"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.jacob.zebulun.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.jacob",
+      "toPersonId": "person.zebulun",
+      "references": ["gen35.23"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.leah.zebulun.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.leah",
+      "toPersonId": "person.zebulun",
+      "references": ["gen30.19-20", "gen35.23"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.jacob.dinah.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.jacob",
+      "toPersonId": "person.dinah",
+      "references": ["gen30.21"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.leah.dinah.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.leah",
+      "toPersonId": "person.dinah",
+      "references": ["gen30.21"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
       "id": "rel.jacob.joseph.parent",
       "type": "parent_child",
       "fromPersonId": "person.jacob",
@@ -322,6 +663,24 @@
       "fromPersonId": "person.rachel",
       "toPersonId": "person.joseph",
       "references": ["gen35.24"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.jacob.benjamin.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.jacob",
+      "toPersonId": "person.benjamin",
+      "references": ["gen35.18", "gen35.24"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.rachel.benjamin.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.rachel",
+      "toPersonId": "person.benjamin",
+      "references": ["gen35.16-18", "gen35.24"],
       "certainty": "explicit",
       "notes": []
     },
@@ -406,6 +765,40 @@
       "notes": []
     },
     {
+      "id": "event.births-of-jacobs-children",
+      "title": "Births of Jacob's children",
+      "kind": "birth_group",
+      "date": {
+        "kind": "relative",
+        "label": "Jacob narrative in Paddan-aram and Canaan",
+        "confidence": "medium",
+        "basis": "explicit_text",
+        "sourceIds": ["source.genesis-patriarchs"]
+      },
+      "personIds": ["person.jacob", "person.leah", "person.rachel", "person.bilhah", "person.zilpah", "person.reuben", "person.simeon", "person.levi", "person.judah", "person.dan", "person.naphtali", "person.gad", "person.asher", "person.issachar", "person.zebulun", "person.dinah", "person.joseph", "person.benjamin"],
+      "ageIds": ["age.patriarchs"],
+      "references": ["gen29.31-35", "gen30.1-24", "gen35.16-18", "gen35.22-26"],
+      "locationIds": ["place.paddan-aram", "place.ephrath"],
+      "notes": ["Grouped event for the starter pack; individual birth events can be split out if timeline detail needs it."]
+    },
+    {
+      "id": "event.rachel-dies-near-ephrath",
+      "title": "Rachel dies near Ephrath",
+      "kind": "death",
+      "date": {
+        "kind": "relative",
+        "label": "After Jacob leaves Bethel",
+        "confidence": "medium",
+        "basis": "explicit_text",
+        "sourceIds": ["source.genesis-patriarchs"]
+      },
+      "personIds": ["person.rachel", "person.benjamin", "person.jacob"],
+      "ageIds": ["age.patriarchs"],
+      "references": ["gen35.16-20"],
+      "locationIds": ["place.ephrath"],
+      "notes": ["Benjamin is included because Rachel's death occurs during his birth narrative."]
+    },
+    {
       "id": "event.davidic-covenant",
       "title": "Davidic covenant promised",
       "kind": "covenant",
@@ -467,8 +860,8 @@
         "sourceIds": ["source.genesis-patriarchs"]
       },
       "referenceRange": ["gen12.1", "gen50.26"],
-      "personIds": ["person.abraham", "person.sarah", "person.isaac", "person.rebekah", "person.jacob", "person.esau", "person.leah", "person.rachel", "person.judah", "person.joseph"],
-      "eventIds": ["event.call-of-abram", "event.birth-of-isaac", "event.jacob-renamed-israel"],
+      "personIds": ["person.abraham", "person.sarah", "person.isaac", "person.rebekah", "person.jacob", "person.esau", "person.leah", "person.rachel", "person.bilhah", "person.zilpah", "person.reuben", "person.simeon", "person.levi", "person.judah", "person.dan", "person.naphtali", "person.gad", "person.asher", "person.issachar", "person.zebulun", "person.dinah", "person.joseph", "person.benjamin"],
+      "eventIds": ["event.call-of-abram", "event.birth-of-isaac", "event.jacob-renamed-israel", "event.births-of-jacobs-children", "event.rachel-dies-near-ephrath"],
       "notes": []
     },
     {
@@ -568,8 +961,8 @@
       "id": "genealogy.patriarchal-core",
       "title": "Patriarchal starter genealogy",
       "references": ["gen11.10-26", "gen21.1-3", "gen25.19-26", "gen35.22-26"],
-      "relationshipIds": ["rel.shem.abraham.ancestor", "rel.abraham.sarah.spouse", "rel.abraham.isaac.parent", "rel.sarah.isaac.parent", "rel.isaac.rebekah.spouse", "rel.isaac.jacob.parent", "rel.rebekah.jacob.parent", "rel.isaac.esau.parent", "rel.rebekah.esau.parent", "rel.jacob.leah.spouse", "rel.jacob.rachel.spouse", "rel.jacob.judah.parent", "rel.leah.judah.parent", "rel.jacob.joseph.parent", "rel.rachel.joseph.parent"],
-      "personIds": ["person.shem", "person.abraham", "person.sarah", "person.isaac", "person.rebekah", "person.jacob", "person.esau", "person.leah", "person.rachel", "person.judah", "person.joseph"],
+      "relationshipIds": ["rel.shem.abraham.ancestor", "rel.abraham.sarah.spouse", "rel.abraham.isaac.parent", "rel.sarah.isaac.parent", "rel.isaac.rebekah.spouse", "rel.isaac.jacob.parent", "rel.rebekah.jacob.parent", "rel.isaac.esau.parent", "rel.rebekah.esau.parent", "rel.jacob.leah.spouse", "rel.jacob.rachel.spouse", "rel.jacob.bilhah.concubine", "rel.jacob.zilpah.concubine", "rel.jacob.reuben.parent", "rel.leah.reuben.parent", "rel.jacob.simeon.parent", "rel.leah.simeon.parent", "rel.jacob.levi.parent", "rel.leah.levi.parent", "rel.jacob.judah.parent", "rel.leah.judah.parent", "rel.jacob.dan.parent", "rel.bilhah.dan.parent", "rel.jacob.naphtali.parent", "rel.bilhah.naphtali.parent", "rel.jacob.gad.parent", "rel.zilpah.gad.parent", "rel.jacob.asher.parent", "rel.zilpah.asher.parent", "rel.jacob.issachar.parent", "rel.leah.issachar.parent", "rel.jacob.zebulun.parent", "rel.leah.zebulun.parent", "rel.jacob.dinah.parent", "rel.leah.dinah.parent", "rel.jacob.joseph.parent", "rel.rachel.joseph.parent", "rel.jacob.benjamin.parent", "rel.rachel.benjamin.parent"],
+      "personIds": ["person.shem", "person.abraham", "person.sarah", "person.isaac", "person.rebekah", "person.jacob", "person.esau", "person.leah", "person.rachel", "person.bilhah", "person.zilpah", "person.reuben", "person.simeon", "person.levi", "person.judah", "person.dan", "person.naphtali", "person.gad", "person.asher", "person.issachar", "person.zebulun", "person.dinah", "person.joseph", "person.benjamin"],
       "certainty": "explicit",
       "notes": []
     },

@@ -69,7 +69,7 @@
       "required": ["id", "type", "fromPersonId", "toPersonId", "references", "certainty"],
       "properties": {
         "id": { "$ref": "#/$defs/id" },
-        "type": { "type": "string", "enum": ["parent_child", "spouse", "sibling", "ancestor_descendant", "lineage_claim", "dynasty"] },
+        "type": { "type": "string", "enum": ["parent_child", "spouse", "concubine", "sibling", "ancestor_descendant", "lineage_claim", "dynasty"] },
         "fromPersonId": { "$ref": "#/$defs/id" },
         "toPersonId": { "$ref": "#/$defs/id" },
         "references": { "type": "array", "items": { "$ref": "#/$defs/reference" } },

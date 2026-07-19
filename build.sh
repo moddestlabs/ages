@@ -81,6 +81,11 @@ if [[ ! -d "build/web" ]]; then
   exit 1
 fi
 
+# Local content iteration should not be hidden behind a stale Flutter PWA cache.
+rm -f build/web/flutter_service_worker.js
+find build/web -name 'flutter_service_worker.js*' -delete
+perl -0pi -e 's/_flutter\.loader\.load\(\{\s*serviceWorkerSettings:\s*\{\s*serviceWorkerVersion:\s*"[^"]+"\s*\/\* Flutter.*?\*\/\s*\}\s*\}\);/_flutter.loader.load();/s' build/web/flutter_bootstrap.js
+
 cd build/web
 
 echo "Build complete."
