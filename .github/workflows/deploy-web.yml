@@ -52,6 +52,9 @@ jobs:
         working-directory: ./ages_app
         run: flutter build web --release --base-href /
 
+      - name: Finalize web PWA assets
+        run: bash scripts/finalize-flutter-web.sh
+
       - name: Configure custom domain
         run: echo "ages.lightsword.app" > ./ages_app/build/web/CNAME
 

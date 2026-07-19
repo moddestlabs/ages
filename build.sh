@@ -75,6 +75,7 @@ fi
 
 flutter pub get
 flutter build web --release --base-href / --no-wasm-dry-run
+bash "$ROOT_DIR/scripts/finalize-flutter-web.sh"
 
 if [[ ! -d "build/web" ]]; then
   echo "Error: build failed; ages_app/build/web was not created."
@@ -84,7 +85,8 @@ fi
 # Local content iteration should not be hidden behind a stale Flutter PWA cache.
 rm -f build/web/flutter_service_worker.js
 find build/web -name 'flutter_service_worker.js*' -delete
-perl -0pi -e 's/_flutter\.loader\.load\(\{\s*serviceWorkerSettings:\s*\{\s*serviceWorkerVersion:\s*"[^"]+"\s*\/\* Flutter.*?\*\/\s*\}\s*\}\);/_flutter.loader.load();/s' build/web/flutter_bootstrap.js
+rm -f build/web/ages_service_worker.js
+perl -0pi -e 's/_flutter\.loader\.load\(\{\s*serviceWorkerSettings:\s*\{.*?\}\s*,?\s*\}\);/_flutter.loader.load();/s' build/web/flutter_bootstrap.js
 
 cd build/web
 
