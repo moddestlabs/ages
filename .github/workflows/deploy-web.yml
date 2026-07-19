@@ -52,6 +52,9 @@ jobs:
         working-directory: ./ages_app
         run: flutter build web --release --base-href /
 
+      - name: Configure custom domain
+        run: echo "ages.lightsword.app" > ./ages_app/build/web/CNAME
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
