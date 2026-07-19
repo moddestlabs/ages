@@ -1,0 +1,11 @@
+{
+  "name": "lightsword-ages",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Seed contracts and data for the LightSword Ages companion app.",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "test": "node scripts/validate-pack.mjs data/biblical_ages_core/pack.json"
+  }
+}

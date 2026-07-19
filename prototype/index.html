@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LightSword Ages Prototype</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <aside class="sidebar" aria-label="People search">
+        <div class="brand-block">
+          <p class="eyebrow">LightSword Ages</p>
+          <h1>Explorer</h1>
+        </div>
+
+        <label class="search-label" for="person-search">Search people</label>
+        <input id="person-search" class="search-input" type="search" autocomplete="off" placeholder="Abraham, David, Jesus">
+
+        <div class="filters" aria-label="View mode">
+          <button class="filter-button is-active" type="button" data-view="tree">Tree</button>
+          <button class="filter-button" type="button" data-view="timeline">Timeline</button>
+          <button class="filter-button" type="button" data-view="prophecy">Prophecy</button>
+        </div>
+
+        <ol id="person-results" class="person-results"></ol>
+      </aside>
+
+      <section class="workspace" aria-label="Explorer workspace">
+        <header class="workspace-header">
+          <div>
+            <p class="eyebrow">Selected person</p>
+            <h2 id="selected-name">Loading</h2>
+          </div>
+          <a id="primary-reference" class="reference-link" href="https://lightsword.app" target="_blank" rel="noreferrer">Open in LightSword</a>
+        </header>
+
+        <section class="age-band" aria-label="Related ages">
+          <div class="section-heading">
+            <h3>Ages</h3>
+            <span id="age-count">0</span>
+          </div>
+          <div id="age-list" class="age-list"></div>
+        </section>
+
+        <section class="main-grid">
+          <div class="graph-panel" aria-label="Relationship graph">
+            <div class="section-heading">
+              <h3>Relationships</h3>
+              <span id="relationship-count">0</span>
+            </div>
+            <div id="relationship-graph" class="relationship-graph"></div>
+          </div>
+
+          <div class="timeline-panel" aria-label="Timeline and events">
+            <div class="section-heading">
+              <h3>Timeline</h3>
+              <span id="event-count">0</span>
+            </div>
+            <div id="timeline-list" class="timeline-list"></div>
+          </div>
+        </section>
+      </section>
+
+      <aside class="detail-panel" aria-label="Details">
+        <div class="section-heading">
+          <h3>Details</h3>
+        </div>
+        <div id="details"></div>
+      </aside>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

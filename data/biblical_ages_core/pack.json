@@ -1,0 +1,646 @@
+{
+  "schemaVersion": 1,
+  "packId": "biblical-ages-core",
+  "title": "Biblical Ages Core",
+  "version": "0.1.0",
+  "license": "TBD",
+  "persons": [
+    {
+      "id": "person.adam",
+      "primaryName": "Adam",
+      "aliases": [],
+      "gender": "male",
+      "tribes": [],
+      "roles": ["first-human", "ancestor"],
+      "keyReferences": ["gen2.7", "gen5.1-5", "luk3.38"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.noah",
+      "primaryName": "Noah",
+      "aliases": [],
+      "gender": "male",
+      "tribes": [],
+      "roles": ["patriarch", "ancestor"],
+      "keyReferences": ["gen6.9", "gen9.1", "gen10.1"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.shem",
+      "primaryName": "Shem",
+      "aliases": [],
+      "gender": "male",
+      "tribes": [],
+      "roles": ["ancestor"],
+      "keyReferences": ["gen10.21", "gen11.10"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.abraham",
+      "primaryName": "Abraham",
+      "aliases": ["Abram"],
+      "gender": "male",
+      "tribes": [],
+      "roles": ["patriarch", "covenant-recipient"],
+      "keyReferences": ["gen12.1-9", "gen15.6", "gen17.5"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.sarah",
+      "primaryName": "Sarah",
+      "aliases": ["Sarai"],
+      "gender": "female",
+      "tribes": [],
+      "roles": ["matriarch"],
+      "keyReferences": ["gen17.15-16", "gen21.1-3"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.isaac",
+      "primaryName": "Isaac",
+      "aliases": [],
+      "gender": "male",
+      "tribes": [],
+      "roles": ["patriarch"],
+      "keyReferences": ["gen21.3", "gen26.2-5"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.rebekah",
+      "primaryName": "Rebekah",
+      "aliases": [],
+      "gender": "female",
+      "tribes": [],
+      "roles": ["matriarch"],
+      "keyReferences": ["gen24.67", "gen25.21-26"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.jacob",
+      "primaryName": "Jacob",
+      "aliases": ["Israel"],
+      "gender": "male",
+      "tribes": [],
+      "roles": ["patriarch", "tribal-ancestor"],
+      "keyReferences": ["gen25.26", "gen32.28", "gen35.22-26"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.esau",
+      "primaryName": "Esau",
+      "aliases": ["Edom"],
+      "gender": "male",
+      "tribes": [],
+      "roles": ["ancestor"],
+      "keyReferences": ["gen25.25", "gen36.1"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.leah",
+      "primaryName": "Leah",
+      "aliases": [],
+      "gender": "female",
+      "tribes": [],
+      "roles": ["matriarch"],
+      "keyReferences": ["gen29.23", "gen35.23"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.rachel",
+      "primaryName": "Rachel",
+      "aliases": [],
+      "gender": "female",
+      "tribes": [],
+      "roles": ["matriarch"],
+      "keyReferences": ["gen29.28", "gen35.24"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.judah",
+      "primaryName": "Judah",
+      "aliases": [],
+      "gender": "male",
+      "tribes": ["Judah"],
+      "roles": ["tribal-ancestor"],
+      "keyReferences": ["gen35.23", "gen49.8-12", "rut4.12"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.joseph",
+      "primaryName": "Joseph",
+      "aliases": [],
+      "gender": "male",
+      "tribes": [],
+      "roles": ["patriarchal-son"],
+      "keyReferences": ["gen30.24", "gen37.2", "gen50.20"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.david",
+      "primaryName": "David",
+      "aliases": [],
+      "gender": "male",
+      "tribes": ["Judah"],
+      "roles": ["king", "covenant-recipient"],
+      "keyReferences": ["rut4.17", "2sa7.12-16", "mat1.6"],
+      "notes": [],
+      "confidence": "high"
+    },
+    {
+      "id": "person.jesus",
+      "primaryName": "Jesus",
+      "aliases": ["Jesus Christ"],
+      "gender": "male",
+      "tribes": ["Judah"],
+      "roles": ["messiah", "son-of-david"],
+      "keyReferences": ["mat1.1", "luk1.32-33", "rev22.16"],
+      "notes": [],
+      "confidence": "high"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel.adam.noah.ancestor",
+      "type": "ancestor_descendant",
+      "fromPersonId": "person.adam",
+      "toPersonId": "person.noah",
+      "references": ["gen5.1-32"],
+      "certainty": "compressed",
+      "notes": ["Modeled as ancestor/descendant for starter-pack scale. Direct generation edges can be expanded later."]
+    },
+    {
+      "id": "rel.noah.shem.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.noah",
+      "toPersonId": "person.shem",
+      "references": ["gen10.1"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.shem.abraham.ancestor",
+      "type": "ancestor_descendant",
+      "fromPersonId": "person.shem",
+      "toPersonId": "person.abraham",
+      "references": ["gen11.10-26"],
+      "certainty": "compressed",
+      "notes": []
+    },
+    {
+      "id": "rel.abraham.sarah.spouse",
+      "type": "spouse",
+      "fromPersonId": "person.abraham",
+      "toPersonId": "person.sarah",
+      "references": ["gen17.15-16"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.abraham.isaac.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.abraham",
+      "toPersonId": "person.isaac",
+      "references": ["gen21.3"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.sarah.isaac.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.sarah",
+      "toPersonId": "person.isaac",
+      "references": ["gen21.1-3"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.isaac.rebekah.spouse",
+      "type": "spouse",
+      "fromPersonId": "person.isaac",
+      "toPersonId": "person.rebekah",
+      "references": ["gen24.67"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.isaac.jacob.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.isaac",
+      "toPersonId": "person.jacob",
+      "references": ["gen25.26"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.rebekah.jacob.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.rebekah",
+      "toPersonId": "person.jacob",
+      "references": ["gen25.21-26"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.isaac.esau.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.isaac",
+      "toPersonId": "person.esau",
+      "references": ["gen25.25"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.rebekah.esau.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.rebekah",
+      "toPersonId": "person.esau",
+      "references": ["gen25.21-25"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.jacob.leah.spouse",
+      "type": "spouse",
+      "fromPersonId": "person.jacob",
+      "toPersonId": "person.leah",
+      "references": ["gen29.23"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.jacob.rachel.spouse",
+      "type": "spouse",
+      "fromPersonId": "person.jacob",
+      "toPersonId": "person.rachel",
+      "references": ["gen29.28"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.jacob.judah.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.jacob",
+      "toPersonId": "person.judah",
+      "references": ["gen35.23"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.leah.judah.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.leah",
+      "toPersonId": "person.judah",
+      "references": ["gen35.23"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.jacob.joseph.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.jacob",
+      "toPersonId": "person.joseph",
+      "references": ["gen35.24"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.rachel.joseph.parent",
+      "type": "parent_child",
+      "fromPersonId": "person.rachel",
+      "toPersonId": "person.joseph",
+      "references": ["gen35.24"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "rel.judah.david.ancestor",
+      "type": "ancestor_descendant",
+      "fromPersonId": "person.judah",
+      "toPersonId": "person.david",
+      "references": ["rut4.18-22", "mat1.2-6"],
+      "certainty": "compressed",
+      "notes": ["Ruth 4 records intermediate names; starter pack keeps the lineage collapsed until those records are expanded."]
+    },
+    {
+      "id": "rel.david.jesus.lineage-matthew",
+      "type": "lineage_claim",
+      "fromPersonId": "person.david",
+      "toPersonId": "person.jesus",
+      "references": ["mat1.1-17"],
+      "certainty": "compressed",
+      "notes": ["Matthew 1 is retained as its own genealogy tradition."]
+    },
+    {
+      "id": "rel.david.jesus.lineage-luke",
+      "type": "lineage_claim",
+      "fromPersonId": "person.david",
+      "toPersonId": "person.jesus",
+      "references": ["luk3.23-38"],
+      "certainty": "compressed",
+      "notes": ["Luke 3 is retained as its own genealogy tradition."]
+    }
+  ],
+  "events": [
+    {
+      "id": "event.call-of-abram",
+      "title": "Call of Abram",
+      "kind": "calling",
+      "date": {
+        "kind": "relative",
+        "label": "Patriarchal period",
+        "confidence": "medium",
+        "basis": "explicit_text",
+        "sourceIds": ["source.genesis-patriarchs"]
+      },
+      "personIds": ["person.abraham", "person.sarah"],
+      "ageIds": ["age.patriarchs"],
+      "references": ["gen12.1-9"],
+      "locationIds": ["place.haran", "place.canaan"],
+      "notes": []
+    },
+    {
+      "id": "event.birth-of-isaac",
+      "title": "Birth of Isaac",
+      "kind": "birth",
+      "date": {
+        "kind": "relative",
+        "label": "After the covenant promise to Abraham and Sarah",
+        "confidence": "medium",
+        "basis": "explicit_text",
+        "sourceIds": ["source.genesis-patriarchs"]
+      },
+      "personIds": ["person.abraham", "person.sarah", "person.isaac"],
+      "ageIds": ["age.patriarchs"],
+      "references": ["gen21.1-3"],
+      "locationIds": [],
+      "notes": []
+    },
+    {
+      "id": "event.jacob-renamed-israel",
+      "title": "Jacob named Israel",
+      "kind": "renaming",
+      "date": {
+        "kind": "relative",
+        "label": "Jacob narrative",
+        "confidence": "medium",
+        "basis": "explicit_text",
+        "sourceIds": ["source.genesis-patriarchs"]
+      },
+      "personIds": ["person.jacob"],
+      "ageIds": ["age.patriarchs"],
+      "references": ["gen32.28"],
+      "locationIds": ["place.peniel"],
+      "notes": []
+    },
+    {
+      "id": "event.davidic-covenant",
+      "title": "Davidic covenant promised",
+      "kind": "covenant",
+      "date": {
+        "kind": "relative",
+        "label": "United monarchy",
+        "confidence": "medium",
+        "basis": "explicit_text",
+        "sourceIds": ["source.davidic-covenant"]
+      },
+      "personIds": ["person.david"],
+      "ageIds": ["age.kingdom"],
+      "references": ["2sa7.12-16"],
+      "locationIds": [],
+      "notes": []
+    },
+    {
+      "id": "event.announcement-to-mary",
+      "title": "Announcement to Mary",
+      "kind": "annunciation",
+      "date": {
+        "kind": "relative",
+        "label": "Gospel opening narratives",
+        "confidence": "medium",
+        "basis": "explicit_text",
+        "sourceIds": ["source.luke-genealogy"]
+      },
+      "personIds": ["person.jesus", "person.david"],
+      "ageIds": ["age.new-covenant"],
+      "references": ["luk1.32-33"],
+      "locationIds": [],
+      "notes": ["David is related by promise language rather than direct scene participation."]
+    }
+  ],
+  "ages": [
+    {
+      "id": "age.primeval",
+      "title": "Primeval History",
+      "date": {
+        "kind": "relative",
+        "label": "Genesis 1-11",
+        "confidence": "medium",
+        "basis": "explicit_text",
+        "sourceIds": ["source.genesis-primeval"]
+      },
+      "referenceRange": ["gen1", "gen11"],
+      "personIds": ["person.adam", "person.noah", "person.shem"],
+      "eventIds": [],
+      "notes": []
+    },
+    {
+      "id": "age.patriarchs",
+      "title": "Patriarchs",
+      "date": {
+        "kind": "relative",
+        "label": "Genesis 12-50",
+        "confidence": "medium",
+        "basis": "explicit_text",
+        "sourceIds": ["source.genesis-patriarchs"]
+      },
+      "referenceRange": ["gen12.1", "gen50.26"],
+      "personIds": ["person.abraham", "person.sarah", "person.isaac", "person.rebekah", "person.jacob", "person.esau", "person.leah", "person.rachel", "person.judah", "person.joseph"],
+      "eventIds": ["event.call-of-abram", "event.birth-of-isaac", "event.jacob-renamed-israel"],
+      "notes": []
+    },
+    {
+      "id": "age.kingdom",
+      "title": "Kingdom and Davidic Promise",
+      "date": {
+        "kind": "relative",
+        "label": "Ruth through the united monarchy",
+        "confidence": "medium",
+        "basis": "explicit_text",
+        "sourceIds": ["source.ruth-david-line", "source.davidic-covenant"]
+      },
+      "referenceRange": ["rut4.18", "2sa7.16"],
+      "personIds": ["person.david"],
+      "eventIds": ["event.davidic-covenant"],
+      "notes": []
+    },
+    {
+      "id": "age.new-covenant",
+      "title": "New Covenant and Messiah",
+      "date": {
+        "kind": "relative",
+        "label": "Gospel and apostolic witness",
+        "confidence": "medium",
+        "basis": "explicit_text",
+        "sourceIds": ["source.matthew-genealogy", "source.luke-genealogy"]
+      },
+      "referenceRange": ["mat1.1", "rev22.21"],
+      "personIds": ["person.jesus"],
+      "eventIds": ["event.announcement-to-mary"],
+      "notes": []
+    },
+    {
+      "id": "age.new-creation",
+      "title": "New Creation",
+      "date": {
+        "kind": "future",
+        "label": "Promised future horizon",
+        "confidence": "medium",
+        "basis": "explicit_text",
+        "sourceIds": ["source.new-creation"]
+      },
+      "referenceRange": ["rev21.1", "rev22.5"],
+      "personIds": ["person.jesus"],
+      "eventIds": [],
+      "notes": []
+    }
+  ],
+  "prophecies": [
+    {
+      "id": "prophecy.seed-promise",
+      "title": "Seed promise",
+      "kind": "promise",
+      "references": ["gen3.15"],
+      "relatedEventIds": [],
+      "relatedAgeIds": ["age.primeval", "age.new-covenant"],
+      "fulfillmentStatus": "partially_fulfilled",
+      "certainty": "interpretive",
+      "notes": ["Starter record links the promise to later messianic reading without forcing a complete fulfillment sequence."]
+    },
+    {
+      "id": "prophecy.abrahamic-blessing",
+      "title": "Nations blessed through Abraham",
+      "kind": "covenant_promise",
+      "references": ["gen12.1-3"],
+      "relatedEventIds": ["event.call-of-abram"],
+      "relatedAgeIds": ["age.patriarchs", "age.new-covenant"],
+      "fulfillmentStatus": "partially_fulfilled",
+      "certainty": "interpretive",
+      "notes": []
+    },
+    {
+      "id": "prophecy.davidic-son",
+      "title": "Davidic son and enduring kingdom",
+      "kind": "covenant_promise",
+      "references": ["2sa7.12-16"],
+      "relatedEventIds": ["event.davidic-covenant", "event.announcement-to-mary"],
+      "relatedAgeIds": ["age.kingdom", "age.new-covenant"],
+      "fulfillmentStatus": "partially_fulfilled",
+      "certainty": "interpretive",
+      "notes": []
+    },
+    {
+      "id": "prophecy.new-creation",
+      "title": "New heaven and new earth",
+      "kind": "future_promise",
+      "references": ["rev21.1-5"],
+      "relatedEventIds": [],
+      "relatedAgeIds": ["age.new-creation"],
+      "fulfillmentStatus": "future",
+      "certainty": "explicit",
+      "notes": []
+    }
+  ],
+  "genealogies": [
+    {
+      "id": "genealogy.patriarchal-core",
+      "title": "Patriarchal starter genealogy",
+      "references": ["gen11.10-26", "gen21.1-3", "gen25.19-26", "gen35.22-26"],
+      "relationshipIds": ["rel.shem.abraham.ancestor", "rel.abraham.sarah.spouse", "rel.abraham.isaac.parent", "rel.sarah.isaac.parent", "rel.isaac.rebekah.spouse", "rel.isaac.jacob.parent", "rel.rebekah.jacob.parent", "rel.isaac.esau.parent", "rel.rebekah.esau.parent", "rel.jacob.leah.spouse", "rel.jacob.rachel.spouse", "rel.jacob.judah.parent", "rel.leah.judah.parent", "rel.jacob.joseph.parent", "rel.rachel.joseph.parent"],
+      "personIds": ["person.shem", "person.abraham", "person.sarah", "person.isaac", "person.rebekah", "person.jacob", "person.esau", "person.leah", "person.rachel", "person.judah", "person.joseph"],
+      "certainty": "explicit",
+      "notes": []
+    },
+    {
+      "id": "genealogy.matthew1",
+      "title": "Matthew 1 genealogy tradition",
+      "references": ["mat1.1-17"],
+      "relationshipIds": ["rel.judah.david.ancestor", "rel.david.jesus.lineage-matthew"],
+      "personIds": ["person.abraham", "person.judah", "person.david", "person.jesus"],
+      "certainty": "compressed",
+      "notes": ["Kept distinct from Luke 3 rather than harmonized into one forced lineage."]
+    },
+    {
+      "id": "genealogy.luke3",
+      "title": "Luke 3 genealogy tradition",
+      "references": ["luk3.23-38"],
+      "relationshipIds": ["rel.adam.noah.ancestor", "rel.noah.shem.parent", "rel.shem.abraham.ancestor", "rel.david.jesus.lineage-luke"],
+      "personIds": ["person.adam", "person.noah", "person.shem", "person.abraham", "person.david", "person.jesus"],
+      "certainty": "compressed",
+      "notes": ["Kept distinct from Matthew 1 rather than harmonized into one forced lineage."]
+    }
+  ],
+  "sources": [
+    {
+      "id": "source.genesis-primeval",
+      "title": "Genesis primeval history",
+      "kind": "biblical_passage_group",
+      "references": ["gen1", "gen11"],
+      "notes": []
+    },
+    {
+      "id": "source.genesis-patriarchs",
+      "title": "Genesis patriarchal narratives",
+      "kind": "biblical_passage_group",
+      "references": ["gen12.1", "gen50.26"],
+      "notes": []
+    },
+    {
+      "id": "source.ruth-david-line",
+      "title": "Ruth 4 Davidic line",
+      "kind": "biblical_passage_group",
+      "references": ["rut4.18-22"],
+      "notes": []
+    },
+    {
+      "id": "source.davidic-covenant",
+      "title": "Davidic covenant passage",
+      "kind": "biblical_passage_group",
+      "references": ["2sa7.12-16"],
+      "notes": []
+    },
+    {
+      "id": "source.matthew-genealogy",
+      "title": "Matthew genealogy",
+      "kind": "biblical_passage_group",
+      "references": ["mat1.1-17"],
+      "notes": []
+    },
+    {
+      "id": "source.luke-genealogy",
+      "title": "Luke genealogy",
+      "kind": "biblical_passage_group",
+      "references": ["luk3.23-38"],
+      "notes": []
+    },
+    {
+      "id": "source.new-creation",
+      "title": "New creation vision",
+      "kind": "biblical_passage_group",
+      "references": ["rev21.1", "rev22.5"],
+      "notes": []
+    }
+  ]
+}

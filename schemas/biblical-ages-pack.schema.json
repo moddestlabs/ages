@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ages.lightsword.app/schemas/biblical-ages-pack.schema.json",
+  "title": "LightSword Ages Pack",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "packId",
+    "title",
+    "version",
+    "license",
+    "persons",
+    "relationships",
+    "events",
+    "ages",
+    "prophecies",
+    "genealogies",
+    "sources"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "integer", "minimum": 1 },
+    "packId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "title": { "type": "string", "minLength": 1 },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "license": { "type": "string", "minLength": 1 },
+    "persons": { "type": "array", "items": { "$ref": "#/$defs/person" } },
+    "relationships": { "type": "array", "items": { "$ref": "#/$defs/relationship" } },
+    "events": { "type": "array", "items": { "$ref": "#/$defs/event" } },
+    "ages": { "type": "array", "items": { "$ref": "#/$defs/age" } },
+    "prophecies": { "type": "array", "items": { "$ref": "#/$defs/prophecy" } },
+    "genealogies": { "type": "array", "items": { "$ref": "#/$defs/genealogy" } },
+    "sources": { "type": "array", "items": { "$ref": "#/$defs/source" } }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z]+\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*$" },
+    "reference": { "type": "string", "pattern": "^[1-3]?[a-z]{2,3}[0-9]+(\\.[0-9]+(-[0-9]+)?)?$" },
+    "confidence": { "type": "string", "enum": ["high", "medium", "low", "tradition", "disputed"] },
+    "certainty": { "type": "string", "enum": ["explicit", "derived", "compressed", "traditional", "interpretive", "disputed"] },
+    "date": {
+      "type": "object",
+      "required": ["kind", "label", "confidence", "basis"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["none", "relative", "range", "point", "lifespan", "future"] },
+        "label": { "type": "string" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "basis": { "type": "string", "enum": ["explicit_text", "derived", "traditional", "scholarly_model", "not_applicable"] },
+        "sourceIds": { "type": "array", "items": { "$ref": "#/$defs/id" } }
+      },
+      "additionalProperties": false
+    },
+    "person": {
+      "type": "object",
+      "required": ["id", "primaryName", "aliases", "roles", "keyReferences", "confidence"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "primaryName": { "type": "string" },
+        "aliases": { "type": "array", "items": { "type": "string" } },
+        "gender": { "type": "string", "enum": ["male", "female", "unknown", "group"] },
+        "tribes": { "type": "array", "items": { "type": "string" } },
+        "roles": { "type": "array", "items": { "type": "string" } },
+        "keyReferences": { "type": "array", "items": { "$ref": "#/$defs/reference" } },
+        "notes": { "type": "array", "items": { "type": "string" } },
+        "confidence": { "$ref": "#/$defs/confidence" }
+      },
+      "additionalProperties": false
+    },
+    "relationship": {
+      "type": "object",
+      "required": ["id", "type", "fromPersonId", "toPersonId", "references", "certainty"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "type": { "type": "string", "enum": ["parent_child", "spouse", "sibling", "ancestor_descendant", "lineage_claim", "dynasty"] },
+        "fromPersonId": { "$ref": "#/$defs/id" },
+        "toPersonId": { "$ref": "#/$defs/id" },
+        "references": { "type": "array", "items": { "$ref": "#/$defs/reference" } },
+        "certainty": { "$ref": "#/$defs/certainty" },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "event": {
+      "type": "object",
+      "required": ["id", "title", "kind", "date", "personIds", "ageIds", "references"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "title": { "type": "string" },
+        "kind": { "type": "string" },
+        "date": { "$ref": "#/$defs/date" },
+        "personIds": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "ageIds": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "references": { "type": "array", "items": { "$ref": "#/$defs/reference" } },
+        "locationIds": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "age": {
+      "type": "object",
+      "required": ["id", "title", "date", "referenceRange", "personIds", "eventIds"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "title": { "type": "string" },
+        "date": { "$ref": "#/$defs/date" },
+        "referenceRange": { "type": "array", "items": { "$ref": "#/$defs/reference" } },
+        "personIds": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "eventIds": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "prophecy": {
+      "type": "object",
+      "required": ["id", "title", "kind", "references", "relatedEventIds", "relatedAgeIds", "fulfillmentStatus", "certainty"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "title": { "type": "string" },
+        "kind": { "type": "string" },
+        "references": { "type": "array", "items": { "$ref": "#/$defs/reference" } },
+        "relatedEventIds": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "relatedAgeIds": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "fulfillmentStatus": { "type": "string", "enum": ["promised", "fulfilled", "partially_fulfilled", "future", "disputed"] },
+        "certainty": { "$ref": "#/$defs/certainty" },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "genealogy": {
+      "type": "object",
+      "required": ["id", "title", "references", "relationshipIds", "personIds", "certainty"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "title": { "type": "string" },
+        "references": { "type": "array", "items": { "$ref": "#/$defs/reference" } },
+        "relationshipIds": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "personIds": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "certainty": { "$ref": "#/$defs/certainty" },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "required": ["id", "title", "kind", "references"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "title": { "type": "string" },
+        "kind": { "type": "string" },
+        "references": { "type": "array", "items": { "$ref": "#/$defs/reference" } },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
